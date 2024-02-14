@@ -40,13 +40,17 @@ function App() {
 
   
   useEffect(() => {
+    
     function onEvent(value) {
-      setWsData(value)
+      setWsData(JSON.parse(value))
     }
-    socket.on('last', onEvent);
+    
+    socket.on('lastDataEMA', onEvent);
+    
     return () => {
-      socket.off('last', onEvent);
+      socket.off('lastDataEMA', onEvent);
     }
+  
   })
 
   return (
@@ -58,8 +62,7 @@ function App() {
 
       <NavbarTop />
       <Logo />
-      <UltimoRegistroTop />
-      <div>{wsData}</div>
+      <UltimoRegistroTop data={wsData} />
       <DadosPrincipais />
       <DadosAvancados/>
       <Graficos/>
