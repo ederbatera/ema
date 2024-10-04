@@ -1,0 +1,77 @@
+.lightning-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /* Para não interferir com outros elementos */
+  z-index: 99;
+}
+
+.lightning-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  background-color: yellow;
+  transform-origin: top left;
+  opacity: 0;
+}
+
+/* Animações zigzag */
+@keyframes zigzag {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(10vw, 5vh) rotate(10deg);
+  }
+  40% {
+    transform: translate(20vw, 10vh) rotate(-10deg);
+  }
+  60% {
+    transform: translate(30vw, 15vh) rotate(15deg);
+  }
+  80% {
+    transform: translate(40vw, 20vh) rotate(-15deg);
+  }
+  100% {
+    transform: translate(50vw, 50vh) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.zigzag-0 {
+  animation: zigzag 1.5s ease-out infinite;
+  animation-delay: 0s;
+}
+
+.zigzag-1 {
+  animation: zigzag 1.5s ease-out infinite;
+  animation-delay: 0.3s;
+}
+
+.zigzag-2 {
+  animation: zigzag 1.5s ease-out infinite;
+  animation-delay: 0.6s;
+}
+
+.zigzag-3 {
+  animation: zigzag 1.5s ease-out infinite;
+  animation-delay: 0.9s;
+}
+
+.zigzag-4 {
+  animation: zigzag 1.5s ease-out infinite;
+  animation-delay: 1.2s;
+}
+
+/* Responsividade para ajustar a escala dos raios conforme a tela */
+@media (max-width: 768px) {
+  .lightning-line {
+    height: 150%;
+    width: 1px;
+  }
+}
