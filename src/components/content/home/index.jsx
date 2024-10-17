@@ -7,6 +7,7 @@ import Sol from './Sol.jsx'
 import Principais from './Principais.jsx'
 import Weather from './Weather.jsx'
 import TopPage from './TopPage.jsx'
+import {Previsao, PrevisaoEstendida, PrevisaoEl} from '../../previsao/Previsao.jsx'
 
 // function CheckIcon() {
 //   return (
@@ -46,7 +47,11 @@ const Home = () => {
         <Weather/>
         <Sol />
         <Graficos />
+        <Previsao indice={0}/>
+        {/* <PrevisaoEstendida/> */}
+        <PrevisaoEl/>
       </section> 
+      
     </>
 
 

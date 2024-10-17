@@ -66,7 +66,7 @@ export function GraficoChuvas() {
   return (
     rainSevenDays[0]?.day ?
       (
-        <Card className="mb-10 max-w-screen-xl w-full rounded-xl
+        <Card className="max-w-screen-xl w-full rounded-xl
       bg-gray-300 text-gray-800 shadow-lg shadow-gray-800
       dark:bg-black border-0 dark:text-blue-gray-200 dark:shadow-blue-gray-900">
 
