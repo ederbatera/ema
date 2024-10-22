@@ -58,7 +58,7 @@ export function GraficoChuvas() {
 
   const chartData2 = [
     { acumulado: "Mês", chuva: chuvaMes },
-    { acumulado: "7 dias", chuva: chuvaSeteDias },
+    { acumulado: "7 dias", chuva: chuvaSeteDias.toFixed(2) },
     { acumulado: "Hoje", chuva: chuvaHoje },
     { acumulado: "5 minutos", chuva: chuvaCincoMin },
   ]
@@ -93,6 +93,9 @@ export function GraficoChuvas() {
                       axisLine={false}
                     // tickFormatter={(value) => value.slice(0, 3)}
                     />
+                    <YAxis 
+                      padding={{ top: 35 }} 
+                      />
                     <ChartTooltip
                       className=" dark:bg-blue-gray-900 dark:text-white dark:border-0"
                       cursor={false}
@@ -159,10 +162,11 @@ export function GraficoChuvas() {
                   dataKey="acumulado"
                   type="category"
                   tickLine={false}
-                  tickMargin={10}
+                  tickMargin={5}
                   axisLine={false}
                 // tickFormatter={(value) => value.slice(0, 3)}
                 // hide
+                padding={{top: 20}}
                 />
                 <XAxis
                   dataKey="chuva"

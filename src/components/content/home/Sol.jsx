@@ -40,8 +40,12 @@ const Sol = () => {
         return `${hours}:${minutes}:${seconds}`;
     }
 
+    if (!weather?.sys.sunrise) {
+        return (<span>Carregando...</span>)
+    }
     const nascer_do_sol = formatDate(new Date(weather.sys.sunrise * 1000))
     const por_do_sol = formatDate(new Date(weather.sys.sunset * 1000))
+
 
     return (
         <motion.span

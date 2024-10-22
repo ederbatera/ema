@@ -11,6 +11,9 @@ import {
 const Weather = () => {
 
     const { weather } = useContext(GlobalContext)
+
+    // if(!weather?.clouds?.all)  return
+
     const variants = {
         hide: {
             opacity: 0,
@@ -44,7 +47,7 @@ const Weather = () => {
             .join(' ')
     }
 
-    if (weather) {
+    if (weather.visibility) {
         return (
             <motion.span
                 className='w-full text-center mx-10 xl:mx-0 md:mx-0'
@@ -78,12 +81,11 @@ const Weather = () => {
                 </Alert>
             </motion.span>
         )
-    }else {
-        return (
-            <div> Carregando...</div>
-        )
+    }else{
+        return (<span> Carregando... </span>)
     }
 
 }
+
 
 export default Weather

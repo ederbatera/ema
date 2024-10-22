@@ -7,7 +7,11 @@ import Sol from './Sol.jsx'
 import Principais from './Principais.jsx'
 import Weather from './Weather.jsx'
 import TopPage from './TopPage.jsx'
-import {Previsao, PrevisaoEstendida} from '../../previsao/Previsao.jsx'
+import { PrevisaoMobile} from '../../previsao/PrevisaoMobile.jsx'
+import { Previsao} from '../../previsao/Previsao.jsx'
+import AlertsTop from './AlertsTop.jsx'
+import AlertChuva from '../alerts/AlertChuva.jsx'
+import useWindowDimensions from "../../../functions/useWindowDimensions.jsx"
 
 // function CheckIcon() {
 //   return (
@@ -36,19 +40,21 @@ import {Previsao, PrevisaoEstendida} from '../../previsao/Previsao.jsx'
 
 
 const Home = () => {
+  const { width } = useWindowDimensions();
 
   return (
 
     <>
       <TopPage />
+      {/* <AlertsTop text={"Isso é um teste\nBahh"}/> */}
+      <AlertChuva/>
       <section className='flex flex-wrap gap-y-6 justify-between items-center text-center mt-6 mx-auto max-w-screen-xl'>        
         <Principais />
         <Advanceds />
         <Weather/>
         <Sol />
         <Graficos />
-        {/* <Previsao indice={0}/> */}
-        <PrevisaoEstendida/>
+        {width > 401 ? (<Previsao/>) : <PrevisaoMobile/>}        
       </section> 
       
     </>

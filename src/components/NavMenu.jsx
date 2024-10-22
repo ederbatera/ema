@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo_ema.png"
 import { ModeToggle } from "../components/mode-toggle"
+import { Link } from "react-router-dom"
 
 import {
   Navbar,
@@ -32,7 +33,7 @@ import TooltipUsersOnline from "./TooltipUsersOnline";
 
 const navListMenuItems = [
   {
-    title: "Métrica Dia",
+    title: "Métricas Dia",
     description: "Registros referente ao dia de consulta. De 01/09/2019 até Hoje.",
     icon: CalendarIcon,
     link: "/metricas-dia",
@@ -76,14 +77,19 @@ function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
-    ({ icon, title, description, value }, key) => (
+    ({ icon, title, description, value, link }, key) => (
       <span
         value={value}
         key={key}
+      // to={link}
+      // target="_blank" 
+      // rel="noopener noreferrer"
       >
+        <Link to={link}>
         <MenuItem className="flex items-center gap-3 rounded-lg
         hover:bg-gray-100
-        dark:hover:!bg-blue-gray-700">
+        dark:hover:!bg-blue-gray-700"
+        >
           <div className="flex items-center justify-center rounded-lg p-2
           !bg-blue-gray-100 
           dark:!bg-blue-gray-700">
@@ -111,6 +117,7 @@ function NavListMenu() {
             </Typography>
           </div>
         </MenuItem>
+      </Link>
       </span >
     ),
   );
@@ -150,7 +157,7 @@ function NavListMenu() {
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl lg:block border-0
         bg-gray-300
-        dark:bg-black dark:opacity-10">
+        dark:bg-black dark:opacity-10 rounded-xl mx-10">
           <ul className="grid grid-cols-3 gap-y-2">
             {renderItems}
           </ul>
@@ -167,24 +174,25 @@ function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 ">
       <Typography
-        as="a"
-        href="./"
+        // as="a"
+        // to="./"
         variant="small"
         // color="blue-gray"
         className="font-medium"
       >
-
-        <ListItem className="flex items-center gap-2 py-2 pr-4
+        <Link to="./">
+          <ListItem className="flex items-center gap-2 py-2 pr-4
         text-blue-gray-900 
         dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
-          onFocus={handleClick}
-        >
-          Início
-        </ListItem>
+          // onFocus={handleClick}
+          >
+            Início
+          </ListItem>
+        </Link>
       </Typography>
       <NavListMenu />
       <Typography
-        as="a"
+        // as="a"
         // href="/sobre-nos"
         variant="small"
         // color="blue-gray"
@@ -195,6 +203,7 @@ function NavList() {
         <Sobre />
       </Typography>
     </List>
+
   );
 }
 
@@ -226,7 +235,7 @@ export default function NavMenu() {
             <span className="ms-3">
               <TooltipSocket />
             </span>
-            <TooltipUsersOnline/>
+            <TooltipUsersOnline />
             <ModeToggle />
 
             <div className="hidden lg:block">
@@ -254,5 +263,5 @@ export default function NavMenu() {
 
 
     </Navbar>
-  );
+  )
 }

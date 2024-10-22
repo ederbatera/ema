@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { motion } from "framer-motion"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
@@ -9,6 +9,7 @@ import { FaTemperatureLow } from "react-icons/fa6";
 import { RiWaterPercentLine } from "react-icons/ri";
 import { FaCloudShowersHeavy } from "react-icons/fa";
 import { CiCircleAlert } from "react-icons/ci";
+import { GlobalContext } from '../../context/GlobalContext';
 
 const ArrowUp = () => {
     return (<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.14645 2.14645C7.34171 1.95118 7.65829 1.95118 7.85355 2.14645L11.8536 6.14645C12.0488 6.34171 12.0488 6.65829 11.8536 6.85355C11.6583 7.04882 11.3417 7.04882 11.1464 6.85355L8 3.70711L8 12.5C8 12.7761 7.77614 13 7.5 13C7.22386 13 7 12.7761 7 12.5L7 3.70711L3.85355 6.85355C3.65829 7.04882 3.34171 7.04882 3.14645 6.85355C2.95118 6.65829 2.95118 6.34171 3.14645 6.14645L7.14645 2.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>)
@@ -51,125 +52,32 @@ const getPrevisao = async () => {
     }
 }
 
-const Previsao = ({ indice }) => {
 
-    const [dia, setDia] = useState(0)
-    const [previsao, setPrevisao] = useState(null)
+const Previsao = () => {
 
-
-    useEffect(() => {
-        setDia(indice)
-    }, [indice])
-
-    useEffect(() => {
-        getPrevisao()
-            .then((data) => {
-                data.forEach(item => {
-                    item.date_str = getDayOfWeek(item.date);
-                })
-                setPrevisao(data)
-            })
-            .catch((error) => {
-                console.error('Erro ao obter previsão:', error)
-            });
-    }, []);
-
-    if (!previsao) {
-        return <div>Carregando...</div>;
-    }
-
-
-    return (
-        <motion.span
-            className='w-full text-center mx-10 xl:mx-0 md:mx-0'
-            variants={variants}
-            initial="hide"
-            whileInView="show"
-            transition={{ duration: 0.8, ease: "easeInOut", }}
-
-        >
-            <Alert className="border-0 shadow-xl rounded-xl
-                    bg-gray-300 text-gray-800 shadow-gray-800
-                    dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
-                <AlertDescription className="">
-
-                    <div className='flex items-center align-middle gap-x-2 mb-2 text-start'>
-                        <CiCircleAlert size={15}/>
-                        {dia == 0 ? "Previsão para Hoje" : `Previsão para ${previsao[dia].date_br}`}
-                    </div>
-                    <div className='flex flex-col md:flex-row md:justify-around items-center gap-y-2 md:gap-y-0'>
-                        <div className='md:flex md:flex-col hidden items-center'>
-                            <div>Amanhecer</div>
-                            <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.dawn}.png`} className='w-14' />
-                            <div>{previsao[dia].text_icon.text.phrase.dawn}</div>
-                        </div>
-                        <div className='flex flex-col items-center'>
-                            <div>Manhã</div>
-                            <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.morning}.png`} className='w-14' />
-                            <div>{previsao[dia].text_icon.text.phrase.morning}</div>
-                        </div>
-                        <div className='flex flex-col items-center'>
-                            <div>Tarde</div>
-                            <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.afternoon}.png`} className='w-14' />
-                            <div>{previsao[dia].text_icon.text.phrase.afternoon}</div>
-                        </div>
-                        <div className='flex flex-col items-center'>
-                            <div>Noite</div>
-                            <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.night}.png`} className='w-14' />
-                            <div>{previsao[dia].text_icon.text.phrase.night}</div>
-                        </div>
-
-                        <div className='text-center justify-center'>
-                            <div className='flex gap-x-1 mt-1 mx-auto items-center'>
-                                <FaTemperatureLow size={15} className='text-red-300' />
-                                <div className='flex items-center'>
-                                    <ArrowUp />
-                                    {previsao[dia].temperature.max}ºC
-                                </div>
-                                <div className='flex items-center'>
-                                    <ArrowDown />
-                                    {previsao[dia].temperature.min}ºC
-                                </div>
-                            </div>
-                            <div className='flex gap-x-1 mx-auto items-center'>
-                                <RiWaterPercentLine size={15} className='text-blue-300' />
-                                <div className='flex items-center'>
-                                    <ArrowUp />
-                                    {previsao[dia].humidity.max}%
-                                </div>
-                                <div className='flex items-center'>
-                                    <ArrowDown />
-                                    {previsao[dia].humidity.min}%
-                                </div>
-                            </div>
-                            <div className='flex gap-x-1 mx-auto items-center'>
-                                <FaCloudShowersHeavy />
-                                {previsao[dia].rain.precipitation} mm
-                                <div>~</div>
-                                <div>{previsao[dia].rain.probability}%</div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* 
-                    <div className='font-thin text-sm mt-4'>
-                        {previsao[dia].text_icon.text.pt}
-                    </div> */}
-                </AlertDescription>
-            </Alert>
-        </motion.span >
-    )
-}
-
-
-const PrevisaoEstendida = () => {
     const [previsao, setPrevisao] = useState(null)
     const [dia, setDia] = useState(0)
+
+    // const { socket } = useContext(GlobalContext)
 
     const handleClick = (e, i) => {
         e.preventDefault()
         setDia(i)
     }
 
+    // useEffect(() => {
+    //     socket.on('previsao', data => {
+    //         console.log(data)
+    //         data.forEach(item => {
+    //             item.date_str = getDayOfWeek(item.date);
+    //         })
+    //         setPrevisao(data)
+
+    //     })
+    //     return () => socket.off()
+
+    // }, []);
+
     useEffect(() => {
         getPrevisao()
             .then((data) => {
@@ -187,9 +95,93 @@ const PrevisaoEstendida = () => {
         return <div>Carregando...</div>;
     }
 
+    // eslint-disable-next-line react/prop-types
+    const Dia = ({ indice }) => {
+
+        useEffect(() => {
+            setDia(indice)
+        }, [indice])
+
+        return (
+            <motion.span
+                className='w-full text-center mx-10 xl:mx-0 md:mx-0'
+                variants={variants}
+                initial="hide"
+                whileInView="show"
+                transition={{ duration: 0.8, ease: "easeInOut", }}
+
+            >
+                <Alert className="border-0 shadow-xl rounded-xl
+                        bg-gray-300 text-gray-800 shadow-gray-800
+                        dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
+                    <AlertDescription className="">
+
+                        <div className='flex items-center align-middle gap-x-2 mb-2 text-start'>
+                            <CiCircleAlert size={15} />
+                            {dia == 0 ? "Previsão para Hoje" : `Previsão para ${previsao[dia].date_br}`}
+                        </div>
+                        <div className='flex flex-col md:flex-row md:justify-around items-center gap-y-2 md:gap-y-0'>
+                            <div className='md:flex md:flex-col hidden items-center'>
+                                <div>Amanhecer</div>
+                                <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.dawn}.png`} className='w-14' />
+                                <div>{previsao[dia].text_icon.text.phrase.dawn}</div>
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <div>Manhã</div>
+                                <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.morning}.png`} className='w-14' />
+                                <div>{previsao[dia].text_icon.text.phrase.morning}</div>
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <div>Tarde</div>
+                                <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.afternoon}.png`} className='w-14' />
+                                <div>{previsao[dia].text_icon.text.phrase.afternoon}</div>
+                            </div>
+                            <div className='flex flex-col items-center'>
+                                <div>Noite</div>
+                                <img src={`https://services.agudos.net/images/previsao/45px/${previsao[dia].text_icon.icon.night}.png`} className='w-14' />
+                                <div>{previsao[dia].text_icon.text.phrase.night}</div>
+                            </div>
+
+                            <div className='text-center justify-center'>
+                                <div className='flex gap-x-1 mt-1 mx-auto items-center'>
+                                    <FaTemperatureLow size={15} className='text-red-300' />
+                                    <div className='flex items-center'>
+                                        <ArrowUp />
+                                        {previsao[dia].temperature.max}ºC
+                                    </div>
+                                    <div className='flex items-center'>
+                                        <ArrowDown />
+                                        {previsao[dia].temperature.min}ºC
+                                    </div>
+                                </div>
+                                <div className='flex gap-x-1 mx-auto items-center'>
+                                    <RiWaterPercentLine size={15} className='text-blue-300' />
+                                    <div className='flex items-center'>
+                                        <ArrowUp />
+                                        {previsao[dia].humidity.max}%
+                                    </div>
+                                    <div className='flex items-center'>
+                                        <ArrowDown />
+                                        {previsao[dia].humidity.min}%
+                                    </div>
+                                </div>
+                                <div className='flex gap-x-1 mx-auto items-center'>
+                                    <FaCloudShowersHeavy />
+                                    {previsao[dia].rain.precipitation} mm
+                                    <div>~</div>
+                                    <div>{previsao[dia].rain.probability}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </AlertDescription>
+                </Alert>
+            </motion.span >
+        )
+    }
+
     return (
         <>
-            <Previsao indice={dia} />
+            <Dia indice={dia} />
             {previsao.map((dia, i) => {
                 if (i == 6) return (
                     <span key={i} className='mb-10 md:mb-0 xl:mb-0 md:hidden'></span>
@@ -262,4 +254,4 @@ const PrevisaoEstendida = () => {
 }
 
 
-export { Previsao, PrevisaoEstendida };
+export { Previsao };

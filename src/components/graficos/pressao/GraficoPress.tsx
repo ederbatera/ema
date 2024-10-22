@@ -58,12 +58,13 @@ export function GraficoPress() {
             }}
             height={100}
           >
-            <CartesianGrid vertical={false} /> 
+            <CartesianGrid vertical={false} horizontal={true} />
             <XAxis
               dataKey="data"
               tickLine={true}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(11, 16)}
+              tickFormatter={(value) => value.slice(11, 16)
+              }
             />
             <YAxis
               domain={[(v) => v - 1, (v) => v + 1]}
@@ -103,6 +104,7 @@ export function GraficoPress() {
               </linearGradient>
             </defs>
             {width > 720 && (<Brush dataKey="name" height={20} stroke="var(--color-Pressao)" />)}
+            {/* <ReferenceLine y={950} label="Max" stroke="red" strokeDasharray="3 3" /> */}
             <Area
               dataKey="Pressão"
               type="natural"
@@ -112,7 +114,7 @@ export function GraficoPress() {
               // fillOpacity={0.2}
               strokeWidth={0.5}
               dot={false}
-              // stackId="a"
+            // stackId="a"
             />
           </AreaChart>
         </ChartContainer>

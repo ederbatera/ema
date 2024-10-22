@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import NavMenu from "./components/NavMenu";
 import { GlobalContext } from "./context/GlobalContext";
 import Home from "./components/content/home";
+import AppRoutes from "./Routes"
 import { ModeToggle } from "./components/mode-toggle"
 import { getMaxMinDay, getAllDay, getDataGraphics, getRainSevenDays, getWeather } from "./api/Gets";
 import socket from "./services/socket"
@@ -10,6 +11,8 @@ import Chuva from "./components/Chuva";
 import { Button } from "@material-tailwind/react";
 import { motion, useScroll } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area"
+
+
 
 
 
@@ -28,11 +31,9 @@ function App() {
   const [currentValues, setCurrentValues] = useState({})
   const [maxMinDay, setMaxMinDay] = useState({})
   const [rainSevenDays, setRainSevenDays] = useState([])
-  const [openAlert, setOpenAlert] = useState(false)
   const [connected, setConnected] = useState(false)
   const [clientsConnected, setClientsConnected] = useState(0)
   const [weather, setWeather] = useState({})
-  const [alertProps, setAlertProps] = useState({ "color": "blue", "variant": "ghost", "text": "Alert!" })
 
   const fetchData = async () => {
     try {
@@ -52,7 +53,7 @@ function App() {
       console.error("Erro ao buscar dados: ", error);
     }
   };
- 
+
 
   useEffect(() => {
     fetchData();
@@ -170,17 +171,16 @@ function App() {
         currentValues, setCurrentValues,
         maxMinDay, setMaxMinDay,
         clientsConnected, socket, connected,
-        openAlert, setOpenAlert,
-        alertProps, setAlertProps,
         rainSevenDays,
         weather
       }}>
       {currentValues.registro ? (
 
         <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-          <Chuva/>
+
+          <Chuva />
           {/* <Raios/> */}
-          <section className="min-h-screen
+          <section className="min-h-[40rem]
                           bg-blue-gray-100 
                           dark:bg-black dark:bg-opacity-90">
             <motion.div className="progress-bar z-20" style={{ scaleX: scrollYProgress }} />
@@ -188,16 +188,18 @@ function App() {
             <div className="text-center text-xs flex flex-col md:flex-row justify-between gap-x-5 mt-1 w-full max-w-screen-xl mx-auto p-2
                         text-gray-600
                         dark:text-gray-700">
-              <div className=""> 
+              <div className="">
                 Estação Meteorológica Agudos/SP
               </div>
               <div className="flex flex-row justify-center">
                 <CiLocationOn size={15} /> -22.467009° -48.973334° | Altitude: 618m
               </div>
             </div>
-            <Home />
+            {/* <Home/> */}
+            <AppRoutes />
           </section>
           <Footer />
+
         </ThemeProvider>
 
       ) : (
