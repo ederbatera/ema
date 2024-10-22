@@ -4,7 +4,7 @@
 import { useState } from "react"
 
 import { Calendar } from "@/components/ui/calendar"
-import Loader from "../../loader/Loader"
+// import Loader from "../../loader/Loader"
 
 const MetricasDia = () => {
   const [date, setDate] = useState(false)
