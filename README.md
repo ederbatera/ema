@@ -34,34 +34,11 @@
 
 ## Instalação e Deploy (Linux Debian/Ubuntu - Development)
 
-Crie o banco de dados, usuário, senha e forneça privilégios ao novo usuário no MariaDB:
-
-```bash
-mysql -u root -p
-CREATE DATABASE ema;
-CREATE USER 'novo_usuário'@'*' IDENTIFIED BY 'senha_do_novo_usuario'; # Substitua o nome de usuário e senha para os de sua escolha
-GRANT ALL PRIVILEGES ON * . * TO 'novo_usuario'@'*'; 
-FLUSH PRIVILEGES;
-EXIT;
-```
-Faça a importação das tabelas.
-
-```bash
-mysql -u root -p ema < database.sql;
-EXIT;
-```
 
 Instalando as dependências e startando o projeto Node e React.
 
-_Antes de prosseguir, edite o arquivo **.env** com o endereço, porta e credenciais do banco de dados._
 
 ```bash
-# Backend
-cd backend
-npm install --save
-node index.js
-
-# Frontend
 cd ../frontend
 npm install
 npm run build
