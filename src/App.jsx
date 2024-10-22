@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import AlertsTop from "./components/AlertsTop";
 import NavMenu from "./components/NavMenu";
 import { GlobalContext } from "./context/GlobalContext";
-import Home from "./components/content/home";
+import Home from "./components/home";
 import AppRoutes from "./Routes"
 import { ModeToggle } from "./components/mode-toggle"
 import { getMaxMinDay, getAllDay, getDataGraphics, getRainSevenDays, getWeather } from "./api/Gets";
@@ -18,7 +18,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ThemeProvider } from "@/components/theme-provider"
-import Footer from "./components/content/footer/Footer";
+import Footer from "./components/footer/Footer";
 import { CiLocationOn } from "react-icons/ci";
 // import Raios from "./components/raios/Raios";
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { useContext } from "react"
-import { GlobalContext } from "../../../context/GlobalContext"
+import { GlobalContext } from "../../context/GlobalContext"
 import { BsSun } from "react-icons/bs";
 import { TbSunrise } from "react-icons/tb";
 import { TbSunset } from "react-icons/tb";
@@ -40,7 +40,7 @@ const Sol = () => {
         return `${hours}:${minutes}:${seconds}`;
     }
 
-    if (!weather?.sys.sunrise) {
+    if (!weather?.sys?.sunrise) {
         return (<span>Carregando...</span>)
     }
     const nascer_do_sol = formatDate(new Date(weather.sys.sunrise * 1000))

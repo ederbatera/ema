@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import { GlobalContext } from "../../../context/GlobalContext"
+import { GlobalContext } from "../../context/GlobalContext"
 import { Typography } from "@material-tailwind/react";
-import useWindowDimensions from "../../../functions/useWindowDimensions"
+import useWindowDimensions from "../../functions/useWindowDimensions"
 
 import { PiClockClockwiseFill } from "react-icons/pi";
 

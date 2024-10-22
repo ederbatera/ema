@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 
-import Home from "./components/content/home";
+import Home from "./components/home";
 import MetricasDia from "./components/metricas/dia/MetricasDia";
 
 export default function AppRoutes() {

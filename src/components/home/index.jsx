@@ -1,17 +1,17 @@
 
 // import { useContext, useEffect, useState } from 'react'
-// import { GlobalContext } from '../../../context/GlobalContext'
-import Graficos from '../../graficos/Graficos.jsx'
+// import { GlobalContext } from '../../context/GlobalContext'
+import Graficos from '../graficos/Graficos.jsx'
 import Advanceds from './Advanceds.jsx'
 import Sol from './Sol.jsx'
 import Principais from './Principais.jsx'
 import Weather from './Weather.jsx'
 import TopPage from './TopPage.jsx'
-import { PrevisaoMobile} from '../../previsao/PrevisaoMobile.jsx'
-import { Previsao} from '../../previsao/Previsao.jsx'
+import { PrevisaoMobile} from '../previsao/PrevisaoMobile.jsx'
+import { Previsao} from '../previsao/Previsao.jsx'
 import AlertsTop from './AlertsTop.jsx'
 import AlertChuva from '../alerts/AlertChuva.jsx'
-import useWindowDimensions from "../../../functions/useWindowDimensions.jsx"
+import useWindowDimensions from "../../functions/useWindowDimensions.jsx"
 
 // function CheckIcon() {
 //   return (

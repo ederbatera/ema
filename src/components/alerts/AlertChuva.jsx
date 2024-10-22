@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { GlobalContext } from '../../../context/GlobalContext'
+import { GlobalContext } from '../../context/GlobalContext'
 import { Alert } from '@material-tailwind/react'
 import { useState } from 'react'
 

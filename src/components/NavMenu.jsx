@@ -81,43 +81,40 @@ function NavListMenu() {
       <span
         value={value}
         key={key}
-      // to={link}
-      // target="_blank" 
-      // rel="noopener noreferrer"
       >
         <Link to={link}>
-        <MenuItem className="flex items-center gap-3 rounded-lg
+          <MenuItem className="flex items-center gap-3 rounded-lg
         hover:bg-gray-100
         dark:hover:!bg-blue-gray-700"
-        >
-          <div className="flex items-center justify-center rounded-lg p-2
+          >
+            <div className="flex items-center justify-center rounded-lg p-2
           !bg-blue-gray-100 
           dark:!bg-blue-gray-700">
-            {" "}
-            {React.createElement(icon, {
-              strokeWidth: 2,
-              className: "h-6 text-gray-900 dark:text-blue-gray-100 w-6",
-            })}
-          </div>
-          <div>
-            <Typography
-              variant="h6"
-              // color="blue-gray"
-              className="flex items-center text-sm font-bold 
+              {" "}
+              {React.createElement(icon, {
+                strokeWidth: 2,
+                className: "h-6 text-gray-900 dark:text-blue-gray-100 w-6",
+              })}
+            </div>
+            <div>
+              <Typography
+                variant="h6"
+                // color="blue-gray"
+                className="flex items-center text-sm font-bold 
               text-blue-gray-900 
               dark:text-blue-gray-50"
-            >
-              {title}
-            </Typography>
-            <Typography
-              variant="paragraph"
-              className="text-xs !font-medium text-blue-gray-600 dark:text-blue-gray-100"
-            >
-              {description}
-            </Typography>
-          </div>
-        </MenuItem>
-      </Link>
+              >
+                {title}
+              </Typography>
+              <Typography
+                variant="lead"
+                className="text-xs !font-medium text-blue-gray-600 dark:text-blue-gray-100"
+              >
+                {description}
+              </Typography>
+            </div>
+          </MenuItem>
+        </Link>
       </span >
     ),
   );
@@ -131,10 +128,7 @@ function NavListMenu() {
         placement="bottom"
       >
         <MenuHandler>
-          <Typography
-            as="span"
-            variant="small"
-            className="font-medium">
+          <span className="font-medium">
             <ListItem
               className="flex items-center gap-1 py-2 pr-4 font-medium
               text-blue-gray-900 
@@ -143,7 +137,13 @@ function NavListMenu() {
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
               onFocus={handleClick}
             >
-              Consultas
+              <Typography
+                // as="span"
+                variant="small"
+                className="font-medium">
+                Consultas
+              </Typography>
+
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${isMenuOpen ? "rotate-180" : ""}`}
@@ -153,7 +153,7 @@ function NavListMenu() {
                 className={`block h-3 w-3 transition-transform lg:hidden ${isMobileMenuOpen ? "rotate-180" : ""}`}
               />
             </ListItem>
-          </Typography>
+          </span>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl lg:block border-0
         bg-gray-300
@@ -173,35 +173,21 @@ function NavListMenu() {
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 ">
-      <Typography
-        // as="a"
-        // to="./"
-        variant="small"
-        // color="blue-gray"
-        className="font-medium"
-      >
+      <span>
         <Link to="./">
           <ListItem className="flex items-center gap-2 py-2 pr-4
         text-blue-gray-900 
         dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
           // onFocus={handleClick}
           >
-            Início
+            <Typography variant="small" className="font-medium">
+              Início
+            </Typography>
           </ListItem>
         </Link>
-      </Typography>
+      </span>
       <NavListMenu />
-      <Typography
-        // as="a"
-        // href="/sobre-nos"
-        variant="small"
-        // color="blue-gray"
-        className="font-medium visited:outline-none
-        text-blue-gray-900 
-        dark:text-blue-gray-100"
-      >
-        <Sobre />
-      </Typography>
+      <Sobre />
     </List>
 
   );
@@ -210,7 +196,6 @@ function NavList() {
 
 
 export default function NavMenu() {
-  // const alertProps = {"alertColor": "blue", "alertVariant" : "ghost", "alertText" : "Texto do Alerta"}
   const [openNav, setOpenNav] = useState(false);
 
 

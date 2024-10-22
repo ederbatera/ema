@@ -1,6 +1,6 @@
 'use client'
 import { useContext, useEffect } from 'react'
-import { GlobalContext } from '../../../context/GlobalContext'
+import { GlobalContext } from '../../context/GlobalContext'
 import { Card, CardBody, CardHeader, Typography } from '@material-tailwind/react'
 import { FaTemperatureHalf } from "react-icons/fa6";
 import { BsClock } from "react-icons/bs";
