@@ -57,15 +57,15 @@ const navListMenuItems = [
     title: "Chuvas no Mês",
     description: "Dados detalhados referente à chuvas.",
     icon: FaCloudRain,
-    link: "/metricas-chuva-mes",
-    value: "metricas-chuva-mes"
+    link: "/metricas-chuva",
+    value: "metricas-chuva"
   },
   {
-    title: "Registros Históricos",
+    title: "Dados Históricos",
     description: "Registros histórios agrupados por ano.",
     icon: GiHistogram,
-    link: "/registros-historicos",
-    value: "registros-historicos"
+    link: "/dados-historicos",
+    value: "dados-historicos"
   },
 ];
 

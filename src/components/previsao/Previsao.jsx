@@ -102,6 +102,19 @@ const Previsao = () => {
             setDia(indice)
         }, [indice])
 
+        let day
+        switch (indice) {
+            case 0:
+                day = `Hoje`
+                break
+            case 1:
+                day = `Amanhã`
+                break
+            default:
+                day = `${getDayOfWeek(previsao[dia].date)} ${previsao[dia].date_br}`
+                break
+        }
+
         return (
             <motion.span
                 className='w-full text-center mx-10 xl:mx-0 md:mx-0'
@@ -116,9 +129,9 @@ const Previsao = () => {
                         dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
                     <AlertDescription className="">
 
-                        <div className='flex items-center align-middle gap-x-2 mb-2 text-start'>
+                        <div className='flex items-center align-middle gap-x-1 mb-2 text-start'>
                             <CiCircleAlert size={15} />
-                            {dia == 0 ? "Previsão para Hoje" : `Previsão para ${previsao[dia].date_br}`}
+                            <div className='font-bold'>{day}</div>
                         </div>
                         <div className='flex flex-col md:flex-row md:justify-around items-center gap-y-2 md:gap-y-0'>
                             <div className='md:flex md:flex-col hidden items-center'>

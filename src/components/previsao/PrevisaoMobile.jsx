@@ -101,11 +101,23 @@ const PrevisaoMobile = () => {
                         >
                             <CarouselContent className="mx-auto">
                                 {previsao.map((dia, i) => {
+                                    let day
+                                    switch (i) {
+                                        case 0:
+                                            day = `Hoje`
+                                            break
+                                        case 1:
+                                            day = `Amanhã`
+                                            break
+                                        default:
+                                            day = `${getDayOfWeek(dia.date)} ${dia.date_br}`
+                                            break
+                                    }
                                     return (
                                         <CarouselItem key={i}>
-                                            <div className='flex items-center justify-center gap-x-2 mb-2'>
+                                            <div className='flex items-center justify-center gap-x-1 mb-2'>
                                                 <CiCircleAlert size={15} />
-                                                <div>{i == 0 ? "Previsão para Hoje" : `Previsão para ${dia.date_br}`}</div>                                                
+                                                <div className='font-bold'>{day}</div>
                                             </div>
                                             <div className='flex flex-col md:flex-row md:justify-around items-center gap-y-2 md:gap-y-0'>
                                                 <div className='md:flex md:flex-col hidden items-center'>
