@@ -4,7 +4,7 @@ const TABLE_HEAD = ["", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", 
 
 
 // eslint-disable-next-line react/prop-types
-export function Chuvas({ years }) {
+export function MediaTemperatura({ years }) {
 
     // console.log(years)
 
@@ -14,19 +14,18 @@ export function Chuvas({ years }) {
 
 
     return (
-        <Card className="px-6 py-6 bg-transparent border flex items-center max-w-screen-xl mx-0 md:mx-auto
-        bg-gray-300 dark:bg-black border-blue-50 dark:border-blue-gray-300">
-            <div className="text-center font-bold">Precipitação.</div>
-            <table className="w-full text-center overflow-x-auto">
+        <Card className=" px-6 pt-6 bg-transparent border border-blue-50 m-5 h-full w-full 
+        bg-gray-300 dark:bg-black">
+            <div className="text-center font-bold">Temperatura Média.</div>
+            <table className="w-full min-w-max table-auto text-left">
                 <thead>
                     <tr>
                         {TABLE_HEAD.map((head) => (
-                            <th key={head} className="border-b pb-4 pt-10
-                            border-blue-50 dark:border-blue-gray-300">
+                            <th key={head} className="border-b border-gray-300 pb-4 pt-10">
                                 <Typography
-                                    // variant="small"
+                                    variant="small"
                                     color="blue-gray"
-                                    className="font-bold leading-none text-xs"
+                                    className="font-bold leading-none"
                                 >
                                     {head}
                                 </Typography>
@@ -34,28 +33,22 @@ export function Chuvas({ years }) {
                         ))}
                     </tr>
                 </thead>
-                <tbody className="">
+                <tbody>
                     {Object.keys(years).map((ano) => {
                         // Obter os dados de chuva para o ano atual
-                        if(ano >= 2025) return
-                        const chuvas = years[ano]["chuva"];
+                        const temp_medias = years[ano]["temp_media"];
                         return (
-                            <tr key={ano} className="hover:bg-gray-50">
-                                <td className="border-b
-                                border-blue-50 dark:border-blue-gray-300">
-                                    <Typography 
-                                    // variant="small" 
-                                    color="blue-gray" 
-                                    className="font-bold text-xs py-2 text-left">
+                            <tr key={ano} className="hover:bg-opacity-50">
+                                <td className="py-4 border-b border-gray-300">
+                                    <Typography variant="small" color="blue-gray" className="font-bold">
                                         {ano}
                                     </Typography>
                                 </td>
-                                {chuvas.map((valor, index) => (
-                                    <td key={index} className=" border-b
-                                     border-blue-50 dark:border-blue-gray-300">
+                                {temp_medias.map((valor, index) => (
+                                    <td key={index} className="py-4 border-b border-gray-300">
                                         <Typography
                                             // variant="small"
-                                            className="font-extralight text-gray-600 text-xs"
+                                            className="font-normal text-gray-600 text-xs"
                                         >
                                             {valor !== null ? valor : "-"}
                                         </Typography>

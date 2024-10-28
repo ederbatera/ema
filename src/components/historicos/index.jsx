@@ -3,6 +3,7 @@ import axios from "axios";
 const api = axios.create()
 
 import { Chuvas } from "./Chuvas";
+import {MediaTemperatura} from "./MediaTemperatura";
 
 const getDadosHistoricos = async () => {
 
@@ -33,14 +34,18 @@ const Historicos = () => {
 
   return (
     <>
-      <div>Historicos</div>
       {
         historico &&
         <Chuvas
-          years={historico} 
-          
+          years={historico}           
           />
       }
+      {/* {
+        historico &&
+        <MediaTemperatura 
+        years={historico}
+        />
+      } */}
     </>
   )
 }
