@@ -23,7 +23,7 @@ const ArrowDown = () => {
 
 function getDayOfWeek(dateString) {
     const daysOfWeek = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
-    const date = new Date(dateString);
+    const date = new Date(dateString); 
     return daysOfWeek[date.getDay()];
 }
 
