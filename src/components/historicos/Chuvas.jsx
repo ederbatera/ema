@@ -14,7 +14,7 @@ export function Chuvas({ years }) {
 
 
     return (
-        <Card className="px-6 py-6 bg-transparent border flex items-center max-w-screen-xl mx-0 md:mx-auto
+        <Card className="px-6 py-6 bg-transparent border flex items-center max-w-screen-xl mx-0 md:mx-auto mb-6
         bg-gray-300 dark:bg-black border-blue-50 dark:border-blue-gray-300">
             <div className="text-center font-bold">Precipitação.</div>
             <table className="w-full text-center overflow-x-auto">
@@ -26,7 +26,8 @@ export function Chuvas({ years }) {
                                 <Typography
                                     // variant="small"
                                     color="blue-gray"
-                                    className="font-bold leading-none text-xs"
+                                    className="font-bold leading-none text-xs
+                                    dark:text-blue-gray-300"
                                 >
                                     {head}
                                 </Typography>
@@ -40,13 +41,14 @@ export function Chuvas({ years }) {
                         if(ano >= 2025) return
                         const chuvas = years[ano]["chuva"];
                         return (
-                            <tr key={ano} className="hover:bg-gray-50">
+                            <tr key={ano} className="hover:bg-blue-gray-100 dark:hover:bg-gray-800">
                                 <td className="border-b
                                 border-blue-50 dark:border-blue-gray-300">
                                     <Typography 
                                     // variant="small" 
                                     color="blue-gray" 
-                                    className="font-bold text-xs py-2 text-left">
+                                    className="font-bold text-xs py-2 text-left
+                                    dark:text-blue-gray-300">
                                         {ano}
                                     </Typography>
                                 </td>

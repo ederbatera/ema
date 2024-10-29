@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create()
 
 import { Chuvas } from "./Chuvas";
-import {MediaTemperatura} from "./MediaTemperatura";
+import { MediaTemperatura } from "./MediaTemperatura";
 
 const getDadosHistoricos = async () => {
 
@@ -33,20 +33,29 @@ const Historicos = () => {
   }, []);
 
   return (
-    <>
+    <div className="bg-blue-gray-100 
+                    dark:bg-black dark:bg-opacity-5">
+      <div className="flex flex-col mx-auto text-center mb-2
+      text-gray-800 dark:text-blue-gray-300">
+        <div className="text-lg">Dados Históricos</div>
+        <div className="text-xs">Desde Agosto de 2019.</div>
+      </div>
+
       {
-        historico &&
-        <Chuvas
-          years={historico}           
-          />
+        historico ?
+          (
+            <>
+              <Chuvas years={historico} />
+              <MediaTemperatura years={historico} />
+              <div className="py-3"></div>
+            </>
+          )
+          :
+          (
+            <div>Carregando...</div>
+          )
       }
-      {/* {
-        historico &&
-        <MediaTemperatura 
-        years={historico}
-        />
-      } */}
-    </>
+    </div>
   )
 }
 

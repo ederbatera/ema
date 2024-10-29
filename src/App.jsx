@@ -176,7 +176,7 @@ function App() {
       }}>
       {currentValues.registro ? (
 
-        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 
           <Chuva />
           {/* <Raios/> */}
