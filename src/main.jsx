@@ -7,11 +7,11 @@ import { BrowserRouter } from "react-router-dom"
 import { ThemeProvider } from "@material-tailwind/react";
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter >
-    <StrictMode>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </StrictMode>
-  </BrowserRouter>,
-)
+    <BrowserRouter >
+      <StrictMode>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </StrictMode>
+    </BrowserRouter>
+  )

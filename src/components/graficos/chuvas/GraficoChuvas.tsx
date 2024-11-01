@@ -73,7 +73,7 @@ export function GraficoChuvas() {
           {chuvaSeteDias > 0 ? (
             <span>
               <CardHeader>
-                <CardTitle>Precipitação em mm/m³</CardTitle>
+                <CardTitle>Precipitação</CardTitle>
                 <CardDescription>Últimos 7 dias</CardDescription>
               </CardHeader>
               <CardContent>

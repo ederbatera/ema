@@ -46,7 +46,6 @@ const Home = () => {
 
     <>
       <TopPage />
-      {/* <AlertsTop text={"Isso é um teste\nBahh"}/> */}
       <AlertChuva/>
       <section className='flex flex-wrap gap-y-6 justify-between items-center text-center mt-6 mx-auto max-w-screen-xl'>        
         <Principais />

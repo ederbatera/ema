@@ -9,7 +9,6 @@ import DadosHistoricos from "./components/historicos/index";
 
 export default function AppRoutes() {
 	return (
-		
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/metricas-dia" element={<MetricasDia />} />
@@ -18,7 +17,7 @@ export default function AppRoutes() {
 				<Route path="/metricas-chuva" element={<MetricasChuva />} />
 				<Route path="/dados-historicos" element={<DadosHistoricos />} />
 			</Routes>
-		
+
 	)
 }
  

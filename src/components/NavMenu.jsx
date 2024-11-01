@@ -127,7 +127,7 @@ function NavListMenu() {
         offset={{ mainAxis: 20 }}
         placement="bottom"
       >
-        {/* <MenuHandler>
+        <MenuHandler>
           <span className="font-medium">
             <ListItem
               className="flex items-center gap-1 py-2 pr-4 font-medium
@@ -154,7 +154,7 @@ function NavListMenu() {
               />
             </ListItem>
           </span>
-        </MenuHandler> */}
+        </MenuHandler>
         <MenuList className="hidden max-w-screen-xl lg:block border-0
         bg-gray-300
         dark:bg-black dark:opacity-10 rounded-xl mx-10">

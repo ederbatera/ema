@@ -105,7 +105,7 @@ const Principais = () => {
             <Card
                 // color="deep-purple"
                 variant="gradient"
-                className="shadow-xl place-items-center shadow-gray-800 p-6
+                className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
                           bg-gray-300 text-gray-800
                           dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
                 <CardHeader
@@ -174,7 +174,7 @@ const Principais = () => {
             <Card
                 // color="deep-purple"
                 variant="gradient"
-                className="shadow-xl place-items-center shadow-gray-800 p-6
+                className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
                           bg-gray-300 text-gray-800
                           dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
                 <CardHeader
@@ -245,7 +245,7 @@ const Principais = () => {
             <Card
                 // color="deep-purple"
                 variant="gradient"
-                className="shadow-xl place-items-center shadow-gray-800 p-6
+                className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
                           bg-gray-300 text-gray-800
                           dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
                 <CardHeader
@@ -315,7 +315,7 @@ const Principais = () => {
             <Card
                 // color="deep-purple"
                 variant="gradient"
-                className="shadow-xl place-items-center shadow-gray-800 p-6
+                className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
                           bg-gray-300 text-gray-800
                           dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900">
                 <CardHeader

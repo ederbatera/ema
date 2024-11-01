@@ -176,11 +176,11 @@ function App() {
       }}>
       {currentValues.registro ? (
 
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
 
           <Chuva />
           {/* <Raios/> */}
-          <section className="min-h-[40rem]
+          <section className="min-h-screen
                           bg-blue-gray-100 
                           dark:bg-black dark:bg-opacity-90">
             <motion.div className="progress-bar z-20" style={{ scaleX: scrollYProgress }} />

@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const api = axios.create()
 
-import { Chuvas } from "./Chuvas";
-import { MediaTemperatura } from "./MediaTemperatura";
+import { Table } from "./Table";
 
 const getDadosHistoricos = async () => {
 
@@ -45,8 +44,18 @@ const Historicos = () => {
         historico ?
           (
             <>
-              <Chuvas years={historico} />
-              <MediaTemperatura years={historico} />
+              <Table years={historico} title={"Precipitacao."} arr={"chuva"}/>
+
+              <Table years={historico} title={"Temperatura média."} arr={"temp_media"} />
+              <Table years={historico} title={"Temperatura mínima (extrema)."} arr={"temp_min"}/>
+              <Table years={historico} title={"Temperatura máxima (extrema)."} arr={"temp_max"}/>
+              <Table years={historico} title={"Média das temperaturas mínimas."} arr={"temp_media_min"}/>
+              <Table years={historico} title={"Média das temperaturas máximas."} arr={"temp_media_max"}/>
+
+              <Table years={historico} title={"Umidade média."} arr={"umi_media"}/>
+              <Table years={historico} title={"Média das umidades mínimas."} arr={"umi_media_min"}/>
+              <Table years={historico} title={"Média das umidades máximas."} arr={"umi_media_max"}/>
+
               <div className="py-3"></div>
             </>
           )

@@ -1,5 +1,5 @@
 "use client"
-
+import React from "react"
 import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Area, AreaChart, XAxis, YAxis, Brush } from "recharts"
 
@@ -74,6 +74,8 @@ export function GraficoTemp() {
             />
             <YAxis
             // domain={[0 , 50]}
+            type="number"
+            // domain={['dataMin', 'auto']}
             axisLine={false}
             tickLine={false}
 

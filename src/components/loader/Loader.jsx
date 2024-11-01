@@ -2,7 +2,7 @@ import { Spinner } from "@material-tailwind/react";
 
 // eslint-disable-next-line react/prop-types
 const Loader = ({props}) => {
-    console.log(props)
+    // console.log(props)
     return (
         //<Spinner color="blue" />
         //<Spinner color="red" />
