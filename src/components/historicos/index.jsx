@@ -3,6 +3,7 @@ import axios from "axios";
 const api = axios.create()
 
 import { Table } from "./Table";
+import Loader from "../loader/Loader";
 
 const getDadosHistoricos = async () => {
 
@@ -44,24 +45,26 @@ const Historicos = () => {
         historico ?
           (
             <>
-              <Table years={historico} title={"Precipitacao."} arr={"chuva"}/>
+              <Table years={historico} title={"Precipitacao."} arr={"chuva"} />
 
               <Table years={historico} title={"Temperatura média."} arr={"temp_media"} />
-              <Table years={historico} title={"Temperatura mínima (extrema)."} arr={"temp_min"}/>
-              <Table years={historico} title={"Temperatura máxima (extrema)."} arr={"temp_max"}/>
-              <Table years={historico} title={"Média das temperaturas mínimas."} arr={"temp_media_min"}/>
-              <Table years={historico} title={"Média das temperaturas máximas."} arr={"temp_media_max"}/>
+              <Table years={historico} title={"Temperatura mínima (extrema)."} arr={"temp_min"} />
+              <Table years={historico} title={"Temperatura máxima (extrema)."} arr={"temp_max"} />
+              <Table years={historico} title={"Média das temperaturas mínimas."} arr={"temp_media_min"} />
+              <Table years={historico} title={"Média das temperaturas máximas."} arr={"temp_media_max"} />
 
-              <Table years={historico} title={"Umidade média."} arr={"umi_media"}/>
-              <Table years={historico} title={"Média das umidades mínimas."} arr={"umi_media_min"}/>
-              <Table years={historico} title={"Média das umidades máximas."} arr={"umi_media_max"}/>
+              <Table years={historico} title={"Umidade média."} arr={"umi_media"} />
+              <Table years={historico} title={"Média das umidades mínimas."} arr={"umi_media_min"} />
+              <Table years={historico} title={"Média das umidades máximas."} arr={"umi_media_max"} />
 
               <div className="py-3"></div>
             </>
           )
           :
           (
-            <div>Carregando...</div>
+            <div className="mt-10 place-items-center">
+              <Loader props={"h-15 w-15"} />
+            </div>
           )
       }
     </div>

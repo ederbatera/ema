@@ -2,16 +2,11 @@ import { useEffect, useState } from "react";
 // import AlertsTop from "./components/AlertsTop";
 import NavMenu from "./components/NavMenu";
 import { GlobalContext } from "./context/GlobalContext";
-import Home from "./components/home";
 import AppRoutes from "./Routes"
-import { ModeToggle } from "./components/mode-toggle"
 import { getMaxMinDay, getAllDay, getDataGraphics, getRainSevenDays, getWeather } from "./api/Gets";
 import socket from "./services/socket"
 import Chuva from "./components/Chuva";
-import { Button } from "@material-tailwind/react";
-import { motion, useScroll } from "framer-motion";
-import { ScrollArea } from "@/components/ui/scroll-area"
-
+import { motion, useScroll, useSpring } from "framer-motion";
 
 
 
@@ -162,6 +157,7 @@ function App() {
 
 
   const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress)
 
   return (
     <GlobalContext.Provider
@@ -183,7 +179,7 @@ function App() {
           <section className="min-h-screen
                           bg-blue-gray-100 
                           dark:bg-black dark:bg-opacity-90">
-            <motion.div className="progress-bar z-20" style={{ scaleX: scrollYProgress }} />
+            <motion.div className="progress-bar z-20" style={{ scaleX }} />
             <NavMenu />
             <div className="text-center text-xs flex flex-col md:flex-row justify-between gap-x-5 mt-1 w-full max-w-screen-xl mx-auto p-2
                         text-gray-600
