@@ -73,7 +73,7 @@ const handleClick = (e) => {
   e.target.blur(); // Remove o foco após o clique
 };
 
-function NavListMenu() {
+function NavListMenu( {openNav, setOpenNav}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
@@ -81,6 +81,7 @@ function NavListMenu() {
       <span
         value={value}
         key={key}
+        onClick={()=> setOpenNav(!openNav)}
       >
         <Link to={link}>
           <MenuItem className="flex items-center gap-3 rounded-lg
@@ -170,7 +171,8 @@ function NavListMenu() {
   );
 }
 
-function NavList() {
+function NavList({openNav, setOpenNav}) {
+
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 ">
       <span>
@@ -179,6 +181,7 @@ function NavList() {
         text-blue-gray-900 
         dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
           // onFocus={handleClick}
+          
           >
             <Typography variant="small" className="font-medium">
               Início
@@ -186,7 +189,7 @@ function NavList() {
           </ListItem>
         </Link>
       </span>
-      <NavListMenu />
+      <NavListMenu openNav={openNav} setOpenNav={setOpenNav}/>
       <Sobre />
     </List>
 
@@ -224,7 +227,7 @@ export default function NavMenu() {
             <ModeToggle />
 
             <div className="hidden lg:block">
-              <NavList />
+              <NavList openNav={true} setOpenNav={setOpenNav}/>
             </div>
             <IconButton
               variant="text"
@@ -241,7 +244,7 @@ export default function NavMenu() {
             </IconButton>
           </div>
           <Collapse open={openNav}>
-            <NavList />
+            <NavList openNav={openNav} setOpenNav={setOpenNav}/>
           </Collapse>
         </div>
       </div>

@@ -8,13 +8,21 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/components/theme-provider"
+import { useEffect } from "react"
 
 export function ModeToggle() {
+
+
     const { setTheme } = useTheme()
 
     const handleClick = (e) => {
         e.target.blur(); // Remove o foco após o clique
-    };
+    }
+
+    useEffect(() => {
+        const storage = localStorage.getItem("vite-ui-theme")
+        !storage && setTheme("system")         
+    },[])
 
     return (
         <DropdownMenu >

@@ -15,6 +15,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { ThemeProvider } from "@/components/theme-provider"
 import Footer from "./components/footer/Footer";
 import { CiLocationOn } from "react-icons/ci";
+import LoaderFull from "./components/loader/LoaderFull";
 // import Raios from "./components/raios/Raios";
 
 
@@ -172,7 +173,7 @@ function App() {
       }}>
       {currentValues.registro ? (
 
-        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
 
           <Chuva />
           {/* <Raios/> */}
@@ -199,9 +200,7 @@ function App() {
         </ThemeProvider>
 
       ) : (
-        <div className="loader-container">
-          <div className="spinner"></div>
-        </div>
+        <LoaderFull />
       )}
     </GlobalContext.Provider>
   )

@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format, min } from "date-fns";
 
 import axios from "axios";
-import Loader from "../../loader/Loader"
+import Loader2 from "../../loader/Loader2";
 import { Grafico } from "./Grafico";
 
 import { FaCloudRain } from "react-icons/fa";
@@ -82,7 +82,8 @@ const MetricasDia = () => {
     if (!dataDay || !maxMin) {
       return (
         <div className="mt-5 place-items-center">
-          <Loader props={"h-15 w-15"} />
+          {/* <Loader props={"h-15 w-15"} /> */}
+          <Loader2 />
         </div>
       )
     }
@@ -169,6 +170,27 @@ const MetricasDia = () => {
           <div className="flex flex-col items-center rounded-xl md:min-w-[10rem] place-items-center min-w-full
                           dark:bg-black shadow-lg shadow-gray-800 text-gray-800 dark:text-blue-gray-200 dark:shadow-blue-gray-900">
             <div className="bg-blue-gray-300 dark:bg-blue-gray-700 bg-opacity-90 w-full rounded-ss-xl rounded-se-xl p-3">
+              <CircleGauge className="mx-auto" size={23} />
+            </div>
+            <div className="my-auto p-5">
+              <div className="flex gap-x-1 items-center my-auto">
+                <ClockArrowUp size={20} />
+                <div className="font-semibold">{`${maxMin.maxPress.value}HPa`}</div>
+                <div>~</div>
+                <div className="font-semibold">{`${format(maxMin.maxPress.date, "hh:mm")}h`}</div>
+              </div>
+              <div className="flex gap-x-1 items-center my-auto">
+                <ClockArrowDown size={20} />
+                <div className="font-semibold">{`${maxMin.minPress.value}HPa`}</div>
+                <div>~</div>
+                <div className="font-semibold">{`${format(maxMin.minPress.date, "hh:mm")}h`}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center rounded-xl md:min-w-[10rem] place-items-center min-w-full
+                          dark:bg-black shadow-lg shadow-gray-800 text-gray-800 dark:text-blue-gray-200 dark:shadow-blue-gray-900">
+            <div className="bg-blue-gray-300 dark:bg-blue-gray-700 bg-opacity-90 w-full rounded-ss-xl rounded-se-xl p-3">
               <Wind className="mx-auto" size={23} />
             </div>
             <div className="my-auto p-5">
@@ -184,9 +206,9 @@ const MetricasDia = () => {
         </div>
 
         {rain && <Grafico dataDay={dataDay} label={"Chuva"} />}
-        <Grafico dataDay={dataDay} label={"Temperatura"} />
-        <Grafico dataDay={dataDay} label={"Umidade"} />
-        {/* <Grafico dataDay={dataDay} label={"Pressão"} maxMin={maxMin}/> */}
+        <Grafico dataDay={dataDay} label={"Temperatura"} maxMin={maxMin}/>
+        <Grafico dataDay={dataDay} label={"Umidade"} maxMin={maxMin}/>
+        <Grafico dataDay={dataDay} label={"Pressão"} maxMin={maxMin}/>
       </section>
     )
   }

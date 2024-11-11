@@ -53,13 +53,12 @@ const chartConfig = {
 export function Grafico({ dataDay, label, maxMin }) {
 
 
-
   const useGraficos = (dataGraphics) => {
     const dataGrafico = dataGraphics.map(item => ({
       data: item.data,
       Temperatura: item.temp_atual,
       Umidade: item.umi_atual,
-      Pressão: item.p_atm,
+      Pressão: parseInt(item.p_atm),
       Chuva: item.chuva_5min
     }));
     return dataGrafico
@@ -68,12 +67,25 @@ export function Grafico({ dataDay, label, maxMin }) {
 
   const dataGraph = useGraficos(dataDay)
 
-  let scaleGraph = [,]
-  if (maxMin) {
-    scaleGraph = [maxMin.minPress.value, maxMin.maxPress.value]
-  }
+  let scaleGraph
 
-  // console.log(scaleGraph)
+  switch (label) {
+    case 'Temperatura':
+      scaleGraph = [parseInt(maxMin.minTemp.value) - 1, parseInt(maxMin.maxTemp.value) + 1]
+      break;
+
+    case 'Umidade':
+      scaleGraph = [parseInt(maxMin.minUmi.value) - 1, parseInt(maxMin.maxUmi.value) + 1]
+      break;
+
+    case 'Pressão':
+      scaleGraph = [parseInt(maxMin.minPress.value) - 1, parseInt(maxMin.maxPress.value) + 1]
+      break;
+
+    default:
+      scaleGraph = [,]
+      break;
+  }
 
   return (
     <section className="max-w-screen-xl w-full pb-6">
@@ -106,6 +118,7 @@ export function Grafico({ dataDay, label, maxMin }) {
               />
               <YAxis
                 type="number"
+                domain={scaleGraph}
                 // domain={[(v) => v - 1, (v) => v + 1]}
                 // domain={
                 //   [
