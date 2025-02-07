@@ -1,28 +1,23 @@
 import { useState } from "react";
 import {
   Card,
-  CardHeader,
-  Input,
   Typography,
-  Button,
-  CardBody,
-  Chip,
+  // Button,
   CardFooter,
-  Tabs,
-  TabsHeader,
-  Tab,
-  Avatar,
-  IconButton,
-  Tooltip,
-  Select,
-  Option
+  // Select,
+  // Option
 } from "@material-tailwind/react";
 
+
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
 import {
-  ArrowLongDownIcon,
-  ArrowLongUpIcon,
-  FunnelIcon,
-} from "@heroicons/react/24/outline"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const TableHeader = ({ headers, onSortColumnChange, sortColumn, sortDirection }) => {
   const handleHeaderClick = (column) => {
@@ -268,79 +263,101 @@ const TableDaysMonth = ({ headers, data = [], isLoading, loadingTag }) => {
   };
 
   return (
-    <section className="w-full max-w-screen-xl rounded-xl bg-transparent">
-      <Card className="h-full w-full border dark:border-gray-300 px-6 bg-transparent">
-        <Typography className="my-3 w-80 font-normal text-gray-600 md:w-full">
-          Métricas diárias.
-        </Typography>
-        <div className="md:flex md:justify-between w-full min-w-min">
-          <div className="flex gap-x-2">
-            <div>
-              <Select
-                variant="standard" // static || standard ||  outlined
-                label="Dias por página"
-                size="md"
-                value={itemsPerPage}
-                onChange={(e) => {
-                  setItemsPerPage(parseInt(e, 10));
-                  setCurrentPage(1);
-                }}
-              >
-                <Option value="7">7</Option>
-                <Option value="14">14</Option>
-                <Option value="31">31</Option>
-              </Select>
-            </div>
-          </div>
-          <div className="">
-            <Input
-              size="md"
-              // className="input input-bordered input-sm w-full max-w-xs focus:outline-0 mb-2"
-              type="text"
-              value={searchValue}
-              onChange={handleSearchChange}
-              placeholder="Filtrar"
-            />
-          </div>
-        </div>
+    // <section className="w-full max-w-screen-xl rounded-xl bg-transparent">
+    //   <Card className="h-full w-full border dark:border-gray-300 px-6 bg-transparent">
+    // <section
+    //   className='w-full max-w-screen-xl mx-10 xl:mx-0 md:mx-0'
+    // >
+    <Card
+      variant="gradient"
+      className="shadow-xl shadow-gray-800 p-6 h-full w-full max-w-screen-xl mx-10 xl:mx-0 md:mx-0"
+    // bg-gray-300 text-gray-800
+    // dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900"
+    >
+      <Typography className="text-center font-bold text-gray-600 md:w-full">
+        Métricas diárias.
+      </Typography>
+      <div className="flex justify-between gap-x-10">
+        {/* <Select
+            variant="outlined" // static || standard ||  outlined
+            label="Dias por página"
+            size="md"
+            value={itemsPerPage}
+            onChange={(e) => {
+              setItemsPerPage(parseInt(e, 10));
+              setCurrentPage(1);
+            }}
+          >
+            <Option value="7">7</Option>
+            <Option value="14">14</Option>
+            <Option value="31">31</Option>
+          </Select> */}
 
-        <div className="">
-          <table className="w-full min-w-min table-auto text-center text-xs">
-            <TableHeader
-              headers={headers}
-              onSortColumnChange={handleSortColumnChange}
-              sortColumn={sortColumn}
-              sortDirection={sortDirection}
-            />
-            <TableBody
-              headers={headers}
-              data={filteredData}
-              currentPage={currentPage}
-              itemsPerPage={itemsPerPage}
-              sortColumn={sortColumn}
-              sortDirection={sortDirection}
-              isLoading={isLoading}
-              loadingTag={loadingTag}
-            />
-          </table>
-        </div>
-        {isLoading ? (
-          <div style={{ textAlign: "center", width: "200px", margin: "0 auto" }}>
-            <p>{loadingTag}</p>
-          </div>
-        ) : (
-          ""
-        )}
+        <Select
+          defaultValue={itemsPerPage}
+          onValueChange={(e) => {
+            setItemsPerPage(parseInt(e, 10));
+            setCurrentPage(1);
+          }}
+        >
+          <SelectTrigger className="w-[180px] rounded-xl">
+            <SelectValue placeholder="Dias por página" />
+          </SelectTrigger>
+          <SelectContent >
+            <SelectItem value="7">7</SelectItem>
+            <SelectItem value="14">14</SelectItem>
+            <SelectItem value="31">31</SelectItem>
+          </SelectContent>
+        </Select>
 
-        <div className="w-full min-w-min">
-          <Pagination
-            currentPage={currentPage}
-            totalNumberOfPages={totalNumberOfPages}
-            handlePageChange={handlePageChange}
+        <Input
+          // size="md"
+          // className="input input-bordered input-sm w-full max-w-xs focus:outline-0 mb-2"
+          className="w-[180px] rounded-xl"
+          type="text"
+          value={searchValue}
+          onChange={handleSearchChange}
+          placeholder="Filtrar"
+        />
+      </div>
+
+      <div className="">
+        <table className="w-full min-w-min table-auto text-center text-xs">
+          <TableHeader
+            headers={headers}
+            onSortColumnChange={handleSortColumnChange}
+            sortColumn={sortColumn}
+            sortDirection={sortDirection}
           />
+          <TableBody
+            headers={headers}
+            data={filteredData}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            sortColumn={sortColumn}
+            sortDirection={sortDirection}
+            isLoading={isLoading}
+            loadingTag={loadingTag}
+          />
+        </table>
+      </div>
+      {isLoading ? (
+        <div style={{ textAlign: "center", width: "200px", margin: "0 auto" }}>
+          <p>{loadingTag}</p>
         </div>
-      </Card>
-    </section>
+      ) : (
+        ""
+      )}
+
+      <div className="w-full min-w-min">
+        <Pagination
+          currentPage={currentPage}
+          totalNumberOfPages={totalNumberOfPages}
+          handlePageChange={handlePageChange}
+        />
+      </div>
+    </Card>
+    // </section>
   );
 };
 

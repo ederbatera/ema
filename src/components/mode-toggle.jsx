@@ -21,49 +21,52 @@ export function ModeToggle() {
 
     useEffect(() => {
         const storage = localStorage.getItem("vite-ui-theme")
-        !storage && setTheme("system")         
-    },[])
+        !storage && setTheme("system")
+    }, [])
 
     return (
-        <DropdownMenu >
-            <DropdownMenuTrigger asChild>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className=""
-                    // onClick={handleClick}
-                    onFocus={handleClick}
+        <section className="ms-auto">
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className=""
+                        // onClick={handleClick}
+                        onFocus={handleClick}
                     >
-                    <Sun className=" h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">Toggle theme</span>
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-                align="end"
-                className="rounded-xl font-medium
+                        <Sun className=" h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <Moon className="absolute h-[1.5rem] w-[1.5rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                        <span className="sr-only">Toggle theme</span>
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                    align="end"
+                    className="rounded-xl font-medium
                         bg-gray-300 text-gray-800
                         dark:bg-black dark:text-blue-gray-200 dark:border-blue-gray-400"
-            >
-                <DropdownMenuItem
-                    className="hover:font-extrabold"
-                    onClick={() => setTheme("light")}
                 >
-                    Claro
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                    className="hover:font-extrabold"
-                    onClick={() => setTheme("dark")}
-                >
-                    Escuro
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                    className="hover:font-extrabold"
-                    onClick={() => setTheme("system")}
-                >
-                    Sistema
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
+                    <DropdownMenuItem
+                        className="hover:font-extrabold"
+                        onClick={() => setTheme("light")}
+                    >
+                        Claro
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        className="hover:font-extrabold"
+                        onClick={() => setTheme("dark")}
+                    >
+                        Escuro
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        className="hover:font-extrabold"
+                        onClick={() => setTheme("system")}
+                    >
+                        Sistema
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </section>
+
     )
 }

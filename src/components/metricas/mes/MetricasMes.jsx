@@ -37,7 +37,7 @@ import Loader2 from "../../loader/Loader2";
 
 import { FaCloudRain } from "react-icons/fa";
 import { Droplets, Wind, Thermometer, ClockArrowUp, ClockArrowDown } from 'lucide-react';
-  import {TableDaysMonth} from "./TableDaysMonth";
+import { TableDaysMonth } from "./TableDaysMonth";
 
 
 const api = axios.create()
@@ -128,9 +128,18 @@ const MetricasMes = () => {
       ]
 
       return (
-        <section className="w-full max-w-screen-xl rounded-xl bg-transparent">
-          <Card className="h-full w-full border border-gray-300 px-6">
-            <Typography className="mt-3 w-80 font-normal text-gray-600 md:w-full">
+        <section
+          className='w-full md:max-w-screen-xl place-items-center mx-10 xl:mx-0 md:mx-0'
+        >
+          <Card
+            variant="gradient"
+            className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
+          bg-gray-300 text-gray-800
+          dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900"
+          >
+            <Typography
+              className="font-bold mt-3 w-80 text-gray-400 dark:text-gray-800 md:w-full text-center"
+            >
               Temperatura
             </Typography>
             <table className="w-full min-w-min table-auto text-center text-xs">
@@ -140,8 +149,8 @@ const MetricasMes = () => {
                     <th key={head} className="border-b border-gray-300 pb-4 pt-10">
                       <Typography
                         variant="small"
-                        color="blue-gray"
-                        className="font-bold leading-none"
+                        // color="blue-gray"
+                        className="font-bold leading-none "
                       >
                         {head}
                       </Typography>
@@ -155,12 +164,11 @@ const MetricasMes = () => {
                   const classes = isLast ? "py-4" : "py-4 border-b border-gray-300";
 
                   return (
-                    <tr key={tempMax} className="hover:bg-gray-50">
+                    <tr key={tempMax} className="">
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          color="blue-gray"
-                          className="font-bold"
+                          className="text-blue-gray-400"
                         >
                           {tempMax}
                         </Typography>
@@ -168,7 +176,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {tempMin}
                         </Typography>
@@ -176,7 +184,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaTemp.toFixed(2)}
                         </Typography>
@@ -184,7 +192,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaTempMax.toFixed(2)}
                         </Typography>
@@ -192,7 +200,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaTempMin.toFixed(2)}
                         </Typography>
@@ -218,11 +226,20 @@ const MetricasMes = () => {
         }
       ]
 
-      return ( 
-        <section className="w-full max-w-screen-xl rounded-xl bg-transparent">
-          <Card className="h-full w-full border border-gray-300 px-6">
-            <Typography className="mt-3 w-80 font-normal text-gray-600 md:w-full">
-              Chuva e Umidade.
+      return (
+        <section
+          className='w-full md:max-w-screen-xl place-items-center mx-10 xl:mx-0 md:mx-0'
+        >
+          <Card
+            variant="gradient"
+            className="shadow-xl place-items-center shadow-gray-800 p-6 min-w-full
+          bg-gray-300 text-gray-800
+          dark:bg-black dark:text-blue-gray-200 dark:shadow-blue-gray-900"
+          >
+            <Typography
+              className="font-bold mt-3 w-80 text-gray-400 dark:text-gray-800 md:w-full text-center"
+            >
+              Chuva e Umidade
             </Typography>
             <table className="w-full min-w-min table-auto text-center text-xs">
               <thead>
@@ -231,7 +248,7 @@ const MetricasMes = () => {
                     <th key={head} className="border-b border-gray-300 pb-4 pt-10">
                       <Typography
                         variant="small"
-                        color="blue-gray"
+                        // color="blue-gray"
                         className="font-bold leading-none"
                       >
                         {head}
@@ -246,12 +263,11 @@ const MetricasMes = () => {
                   const classes = isLast ? "py-4" : "py-4 border-b border-gray-300";
 
                   return (
-                    <tr key={chuva} className="hover:bg-gray-50">
+                    <tr key={chuva} className="">
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          color="blue-gray"
-                          className="font-bold"
+                          className="text-blue-gray-400"
                         >
                           {chuva}
                         </Typography>
@@ -259,7 +275,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaUmidade.toFixed(2)}
                         </Typography>
@@ -267,7 +283,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaUmidadeMin.toFixed(2)}
                         </Typography>
@@ -275,7 +291,7 @@ const MetricasMes = () => {
                       <td className={classes}>
                         <Typography
                           variant="small"
-                          className="font-normal text-gray-600"
+                          className="text-blue-gray-400"
                         >
                           {mediaUmidadeMax.toFixed(2)}
                         </Typography>
@@ -307,14 +323,14 @@ const MetricasMes = () => {
         // minute: "numeric",
       }
       const dateTimeFormat = new Intl.DateTimeFormat("pt-BR", options)
-      const str =  dateTimeFormat.format(new Date(date))
+      const str = dateTimeFormat.format(new Date(date))
       return str.charAt(0).toUpperCase() + str.slice(1)
 
     }
 
     return (
-      <section className="flex flex-col place-items-center mt-3 gap-5 w-full">
-        <div className="w-full max-w-screen-xl">
+      <section className="flex flex-col justify-center items-center mt-3 gap-5 w-full">
+        <div className="flex flex-col justify-center items-center">
           <Typography variant="lead" color="blue-gray" className="font-bold">
             Métricas de {monthAndYearString(date)}
           </Typography>
@@ -323,19 +339,19 @@ const MetricasMes = () => {
         <TableUmi />
         <GraphRain />
         <TableDaysMonth
-        headers={[
-          { column: "dia", label: "Data" },
-          { column: "chuva", label: "Chuva" },
-          { column: "tempMaxima", label: "Temp Máxima" },
-          { column: "tempMinima", label: "Temp Mínima" },
-          { column: "umiMaxima", label: "Umi Mínima" },
-          { column: "umiMinima", label: "Umi Mínima" },
-        ]}
-        data={dadosDiarios}
-        // isLoading={isLoading}
-        isLoading={false}
-        loadingTag={<h1>Loading...</h1>}
-      />
+          headers={[
+            { column: "dia", label: "Data" },
+            { column: "chuva", label: "Chuva" },
+            { column: "tempMaxima", label: "Temp Máxima" },
+            { column: "tempMinima", label: "Temp Mínima" },
+            { column: "umiMaxima", label: "Umi Mínima" },
+            { column: "umiMinima", label: "Umi Mínima" },
+          ]}
+          data={dadosDiarios}
+          // isLoading={isLoading}
+          isLoading={false}
+          loadingTag={<h1>Loading...</h1>}
+        />
 
         {/* <div className="flex flex-wrap gap-y-3 mb-6 w-full max-w-screen-xl justify-between">
 
@@ -446,7 +462,7 @@ const MetricasMes = () => {
     return (
       <section className="flex justify-center">
         <DatePicker
-          selected={new Date(date)}
+          selected={new Date()}
           // selected={date}
           onChange={(date) => handleChange(date)}
           minDate={new Date("2019-09-01")}

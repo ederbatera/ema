@@ -25,9 +25,7 @@ const Sobre = () => {
         <Dialog>
             <DialogTrigger asChild>
                 <ListItem
-                    className="flex items-center gap-2 py-2 pr-4
-                    text-blue-gray-900 
-                    dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
+                    className="flex items-center gap-2 py-2 pr-4 text-blue-gray-900 dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
                     onFocus={handleClick}
                 >
                     <Typography

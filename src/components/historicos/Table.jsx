@@ -37,7 +37,7 @@ export function Table({ years, title, arr }) {
                 </thead>
                 <tbody className="">
                     {Object.keys(years).map((ano) => {
-                        if(ano >= 2025) return
+                        if(ano >= 2026) return
                         if(ano == 2019 && (arr == "umi_media" || arr == "umi_media" || arr == "umi_media_min" || arr == "umi_media_max")) return
                         
                         const values = years[ano][arr];
@@ -53,7 +53,10 @@ export function Table({ years, title, arr }) {
                                         {ano}
                                     </Typography>
                                 </td>
-                                {values.map((valor, index) => (
+                                {
+                                
+                                // eslint-disable-next-line react/prop-types
+                                values.map((valor, index) => (
                                     <td key={index} className=" border-b
                                      border-blue-50 dark:border-blue-gray-300">
                                         <Typography
@@ -63,7 +66,9 @@ export function Table({ years, title, arr }) {
                                             {valor !== null ? valor : "-"}
                                         </Typography>
                                     </td>
-                                ))}
+                                ))
+                                
+                                }
                             </tr>
                         );
                     })}

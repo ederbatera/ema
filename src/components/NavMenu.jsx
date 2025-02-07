@@ -73,7 +73,7 @@ const handleClick = (e) => {
   e.target.blur(); // Remove o foco após o clique
 };
 
-function NavListMenu( {openNav, setOpenNav}) {
+function NavListMenu({ openNav, setOpenNav }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const renderItems = navListMenuItems.map(
@@ -81,7 +81,7 @@ function NavListMenu( {openNav, setOpenNav}) {
       <span
         value={value}
         key={key}
-        onClick={()=> setOpenNav(!openNav)}
+        onClick={() => setOpenNav(!openNav)}
       >
         <Link to={link}>
           <MenuItem className="flex items-center gap-3 rounded-lg
@@ -171,7 +171,7 @@ function NavListMenu( {openNav, setOpenNav}) {
   );
 }
 
-function NavList({openNav, setOpenNav}) {
+function NavList({ openNav, setOpenNav }) {
 
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 ">
@@ -181,7 +181,7 @@ function NavList({openNav, setOpenNav}) {
         text-blue-gray-900 
         dark:text-blue-gray-100 dark:hover:bg-blue-gray-700"
           // onFocus={handleClick}
-          
+
           >
             <Typography variant="small" className="font-medium">
               Início
@@ -189,7 +189,7 @@ function NavList({openNav, setOpenNav}) {
           </ListItem>
         </Link>
       </span>
-      <NavListMenu openNav={openNav} setOpenNav={setOpenNav}/>
+      <NavListMenu openNav={openNav} setOpenNav={setOpenNav} />
       <Sobre />
     </List>
 
@@ -219,15 +219,17 @@ export default function NavMenu() {
           <div className="flex items-center justify-between focus:outline-none active:outline-none
         text-blue-gray-900
         dark:text-gray-300">
-            <img className="h-7 md:h-9 opacity-80 dark:opacity-65" src={Logo} alt="" />
-            <span className="ms-3">
-              <TooltipSocket />
-            </span>
-            <TooltipUsersOnline />
+            <div className="flex items-center">
+              <img className="h-7 md:h-9 opacity-80 dark:opacity-65" src={Logo} alt="" />
+              <span className="ms-3">
+                <TooltipSocket />
+              </span>
+            </div>
+            {/* <TooltipUsersOnline /> */}
             <ModeToggle />
 
             <div className="hidden lg:block">
-              <NavList openNav={true} setOpenNav={setOpenNav}/>
+              <NavList openNav={true} setOpenNav={setOpenNav} />
             </div>
             <IconButton
               variant="text"
@@ -244,7 +246,7 @@ export default function NavMenu() {
             </IconButton>
           </div>
           <Collapse open={openNav}>
-            <NavList openNav={openNav} setOpenNav={setOpenNav}/>
+            <NavList openNav={openNav} setOpenNav={setOpenNav} />
           </Collapse>
         </div>
       </div>
