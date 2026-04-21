@@ -37,7 +37,7 @@ export function Table({ years, title, arr }) {
                 </thead>
                 <tbody className="">
                     {Object.keys(years).map((ano) => {
-                        if(ano >= 2026) return
+                        if(ano >= 2027) return
                         if(ano == 2019 && (arr == "umi_media" || arr == "umi_media" || arr == "umi_media_min" || arr == "umi_media_max")) return
                         
                         const values = years[ano][arr];
