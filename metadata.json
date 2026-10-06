@@ -1,0 +1,6 @@
+{
+  "name": "Estação Meteorológica Agudos",
+  "description": "Sistema de monitoramento meteorológico da Estação Automática de Agudos com telemetria em tempo real, backend Node.js, cache Redis e autenticação JWT.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

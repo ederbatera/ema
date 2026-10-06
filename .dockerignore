@@ -1,0 +1,25 @@
+# Dependências locais e builds
+node_modules
+dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Git e controle de versão
+.git
+.gitignore
+
+# Arquivos de log e temporários
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Dados voláteis locais
+data/*.json
+
+# Workspace e metadados
+.aistudio
+.vscode
+.idea

@@ -1,0 +1,142 @@
+version: '3.8'
+
+# ==============================================================================
+# METEOPULSE PRO EMA — DOCKER SWARM PRODUCTION STACK
+# Orquestração em Cluster com Alta Disponibilidade, Rolling Updates e Zero Downtime
+# ==============================================================================
+
+services:
+  ema_app:
+    image: ederbatera/ema:${APP_VERSION:-1.0.0}
+    ports:
+      - 9062:3000
+    environment:
+      # Controle de Versão da Imagem e da Aplicação
+      APP_VERSION: "${APP_VERSION:-1.0.0}"
+      VITE_APP_VERSION: "${APP_VERSION:-1.0.0}"
+      IMAGE_REPOSITORY: "ederbatera/ema"
+
+      # Ambiente de execução
+      NODE_ENV: "production"
+      PORT: "3000"
+
+      # Banco de Dados Principal (Telemetria EMA - MariaDB / MySQL)
+      DATABASE_URL: "${DATABASE_URL}"
+      DB_HOST: "${DB_HOST:-mariadb}"
+      DB_PORT: "${DB_PORT:-3306}"
+      DB_USER: "${DB_USER:-react_ema}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      DB_NAME: "${DB_NAME:-eder_estacao}"
+      DB_TABLE_READINGS: "${DB_TABLE_READINGS:-EMA_1_2026}"
+      DB_SSL: "${DB_SSL:-false}"
+
+      # Banco de Dados Secundário (Usuários, Auditoria & Histórico)
+      DB_USERS_NAME: "${DB_USERS_NAME:-usuarios}"
+      DB_TABLE_USERS: "${DB_TABLE_USERS:-usuarios}"
+      DB_TABLE_USERS_LOGS: "${DB_TABLE_USERS_LOGS:-usuarios_logs}"
+      DB_TABLE_HISTORICAL: "${DB_TABLE_HISTORICAL:-dados_historicos}"
+
+      # APIs Externas de Previsão Numérica do Tempo
+      WEATHER_API_PROVIDER: "${WEATHER_API_PROVIDER:-open-meteo}"
+      WEATHER_API_KEY: "${WEATHER_API_KEY:-}"
+      WEATHER_API_URL: "${WEATHER_API_URL:-https://weather.googleapis.com/v1/forecast/days:lookup}"
+      OPEN_METEO_API_URL: "${OPEN_METEO_API_URL:-https://api.open-meteo.com/v1/forecast}"
+      WEATHER_CACHE_TTL_SECONDS: "${WEATHER_CACHE_TTL_SECONDS:-3600}"
+
+      # Coordenadas e Metadados da Estação EMA
+      STATION_NAME: "${STATION_NAME:-EMA - Estação Meteorológica Agudos}"
+      STATION_CODE: "${STATION_CODE:-#BR-SP-AGU-EMA01 • INMET / WMO}"
+      STATION_LATITUDE: "${STATION_LATITUDE:--22.467009}"
+      STATION_LONGITUDE: "${STATION_LONGITUDE:--48.973334}"
+      STATION_ALTITUDE: "${STATION_ALTITUDE:-618}"
+
+      # Avisos e Alertas Meteorológicos (INMET / Defesa Civil)
+      INMET_ALERTS_API_URL: "${INMET_ALERTS_API_URL:-https://radarmeteorologico.com.br/api/v1/alertas}"
+      INMET_ALERTS_UF: "${INMET_ALERTS_UF:-SP}"
+      INMET_ALERTS_CACHE_TTL: "${INMET_ALERTS_CACHE_TTL:-600}"
+
+      # Segurança JWT
+      JWT_SECRET: "${JWT_SECRET}"
+
+      # Cache Distribuído (Conexão interna à rede overlay do Swarm)
+      REDIS_HOST: "${REDIS_HOST:-redis}"
+      REDIS_PORT: "${REDIS_PORT:-6379}"
+      REDIS_URL: "${REDIS_URL:-redis://redis:6379}"
+      REDIS_RESTRICT_LOCALHOST: "${REDIS_RESTRICT_LOCALHOST:-false}"
+
+    networks:
+      - traefik_public
+    volumes:
+      - ema_data:/app/data
+
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+        failure_action: rollback
+        monitor: 15s
+        max_failure_ratio: 0.2
+      rollback_config:
+        parallelism: 1
+        delay: 5s
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 512M
+        reservations:
+          cpus: '0.20'
+          memory: 256M
+
+  # redis_ema:
+  #   image: redis:7-alpine
+  #   command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+  #   networks:
+  #     - traefik_public
+  #   volumes:
+  #     - redis_ema_data:/data
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 10s
+  #     timeout: 3s
+  #     retries: 3
+  #     start_period: 5s
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 1
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 5s
+  #       max_attempts: 3
+  #     resources:
+  #       limits:
+  #         cpus: '0.50'
+  #         memory: 256M
+  #       reservations:
+  #         cpus: '0.10'
+  #         memory: 64M
+
+networks:
+  traefik_public:
+    external: true
+
+volumes:
+  ema_data:
+    driver: local
+  # redis_ema_data:
+  #   driver: local
