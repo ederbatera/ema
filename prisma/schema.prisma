@@ -1,0 +1,51 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model EmaReading {
+  registro    Int      @id @default(autoincrement()) @map("REGISTRO")
+  data        DateTime @default(now()) @map("DATA")
+  tempAtual   Float    @map("TEMP_ATUAL")
+  tMax        Int      @map("T_MAX")
+  tMin        Int      @map("T_MIN")
+  umiAtual    Int      @map("UMI_ATUAL")
+  uMax        Int      @map("U_MAX")
+  uMin        Int      @map("U_MIN")
+  umidAbs     Int      @map("UMID_ABS")
+  pAtm        Int      @map("P_ATM")
+  wind        Int      @map("WIND")
+  wDir        String   @db.VarChar(10) @map("W_DIR")
+  raj         Int      @map("RAJ")
+  dirRaj      String   @db.VarChar(10) @map("DIR_RAJ")
+  qtrRaj      String   @db.VarChar(10) @map("QTR_RAJ")
+  chuvaVel    Float    @map("CHUVA_VEL")
+  chuva5min   Float    @map("CHUVA_5MIN")
+  chuvaDia    Float    @map("CHUVA_DIA")
+  chuvaMes    Float    @map("CHUVA_MES")
+  windChill   String   @db.VarChar(20) @map("WIND_CHILL")
+  heatIndex   String   @db.VarChar(20) @map("HEAT_INDEX")
+  dewPoint    Int      @map("DEW_POINT")
+  sensation   Int      @map("SENSATION")
+  uvIndex     Int      @map("UV_INDEX")
+  uvIndex2    String   @db.VarChar(50) @map("UV_INDEX2")
+  vBat        Float    @map("V_BAT")
+  mbT         Int      @map("MB_T")
+  res         Int      @map("RES")
+
+  @@map("EMA_1_2026")
+  @@index([data])
+  @@index([tempAtual])
+  @@index([umiAtual])
+  @@index([pAtm])
+  @@index([uvIndex])
+  @@index([chuvaDia])
+  @@index([raj])
+  @@index([registro, tempAtual])
+}
+

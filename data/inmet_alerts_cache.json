@@ -1,0 +1,58 @@
+{
+  "savedAt": 1789592824268,
+  "uf": "SP",
+  "alerts": [
+    {
+      "id": "inmet-55732",
+      "level": "ALERTA AMARELO • PERIGO POTENCIAL",
+      "title": "Tempestade",
+      "description": "Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h), e queda de granizo. Baixo risco de corte de energia elétrica, estragos em plantações, queda de galhos de árvores e de alagamentos.",
+      "source": "Aviso Oficial — INMET (Instituto Nacional de Meteorologia)",
+      "validUntil": "18/09 às 23:59 BRT",
+      "severity": "PERIGO POTENCIAL",
+      "active": true,
+      "evento": "Tempestade",
+      "nivelNum": 1,
+      "inicio": "2026-09-18 00:00",
+      "fim": "2026-09-18 23:59",
+      "riscos": [
+        "Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h), e queda de granizo. Baixo risco de corte de energia elétrica, estragos em plantações, queda de galhos de árvores e de alagamentos."
+      ],
+      "instrucoes": [
+        "Em caso de rajadas de vento: (não se abrigue debaixo de árvores, pois há leve risco de queda e descargas elétricas e não estacione veículos próximos a torres de transmissão e placas de propaganda).",
+        "Evite usar aparelhos eletrônicos ligados à tomada.",
+        "Obtenha mais informações junto à Defesa Civil (telefone 199) e ao Corpo de Bombeiros (telefone 193)."
+      ],
+      "url": "https://radarmeteorologico.com.br/alertas/sc/tempestade-55732",
+      "municipiosAfetados": 0,
+      "fonteOficial": "INMET — Instituto Nacional de Meteorologia",
+      "atualizadoEm": "2026-09-16T21:07:04.211Z"
+    },
+    {
+      "id": "inmet-55733",
+      "level": "ALERTA AMARELO • PERIGO POTENCIAL",
+      "title": "Tempestade",
+      "description": "Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h), e queda de granizo. Baixo risco de corte de energia elétrica, estragos em plantações, queda de galhos de árvores e de alagamentos.",
+      "source": "Aviso Oficial — INMET (Instituto Nacional de Meteorologia)",
+      "validUntil": "19/09 às 23:59 BRT",
+      "severity": "PERIGO POTENCIAL",
+      "active": true,
+      "evento": "Tempestade",
+      "nivelNum": 1,
+      "inicio": "2026-09-19 00:00",
+      "fim": "2026-09-19 23:59",
+      "riscos": [
+        "Chuva entre 20 e 30 mm/h ou até 50 mm/dia, ventos intensos (40-60 km/h), e queda de granizo. Baixo risco de corte de energia elétrica, estragos em plantações, queda de galhos de árvores e de alagamentos."
+      ],
+      "instrucoes": [
+        "Em caso de rajadas de vento: (não se abrigue debaixo de árvores, pois há leve risco de queda e descargas elétricas e não estacione veículos próximos a torres de transmissão e placas de propaganda).",
+        "Evite usar aparelhos eletrônicos ligados à tomada.",
+        "Obtenha mais informações junto à Defesa Civil (telefone 199) e ao Corpo de Bombeiros (telefone 193)."
+      ],
+      "url": "https://radarmeteorologico.com.br/alertas/pr/tempestade-55733",
+      "municipiosAfetados": 0,
+      "fonteOficial": "INMET — Instituto Nacional de Meteorologia",
+      "atualizadoEm": "2026-09-16T21:07:04.211Z"
+    }
+  ]
+}
